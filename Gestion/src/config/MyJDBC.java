@@ -1,27 +1,26 @@
 package config;
 
+import com.mysql.cj.jdbc.ConnectionImpl;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class MyJDBC{
 
-    public Connection databeLink;
     public Connection getConnection() {
-
-        String databaseName = "testjava";
-        String databaseUser = "root";
-        String databsePasseword = "";
-        String url = "jdbc:mysql://localhost:3306/"+databaseName;
-
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            databeLink = DriverManager.getConnection(url,databaseUser,databsePasseword);
-        }catch(Exception ex){
-            ex.printStackTrace();
-            ex.getCause();
+        Connection connection = null;
+        try {
+              connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/gestion","root","");
+              if(connection!=null){
+                  System.out.println("connected");
+              }
+              return connection;
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        return databeLink;
+        return connection;
     }
+
 }
 
 

@@ -31,7 +31,7 @@ drop table if exists VISITER;
 /*==============================================================*/
 create table APPARTEMENT
 (
-   IDAPPARTEMENT        int not null,
+   IDAPPARTEMENT        int not null AUTO_INCREMENT,
    IDIMMEUBLE           int,
    NUMERO               int not null,
    SUPERFICIE           float not null,
@@ -45,7 +45,7 @@ create table APPARTEMENT
 /*==============================================================*/
 create table AVOCAT
 (
-   IDAVOCAT             int not null,
+   IDAVOCAT             int not null AUTO_INCREMENT,
    NOMA                 varchar(191) not null,
    PRENOMA              varchar(191) not null,
    ADRESSAA             varchar(191) not null,
@@ -59,7 +59,7 @@ create table AVOCAT
 /*==============================================================*/
 create table CLIENT
 (
-   IDCLIENT             int not null,
+   IDCLIENT             int not null AUTO_INCREMENT,
    NUMERO_CNI           varchar(191) not null,
    NOM                  varchar(191) not null,
    PRENOM               varchar(191) not null,
@@ -74,7 +74,7 @@ create table CLIENT
 /*==============================================================*/
 create table CONTRAT
 (
-   IDCONTRAT            int not null,
+   IDCONTRAT            int not null AUTO_INCREMENT,
    IDDIRECTEUR          int,
    IDCLIENT             int,
    IDAPPARTEMENT        int,
@@ -88,7 +88,7 @@ create table CONTRAT
 /*==============================================================*/
 create table DESISTEMENT
 (
-   IDDESISTEMENT        int not null,
+   IDDESISTEMENT        int not null AUTO_INCREMENT,
    IDAPPARTEMENT        int,
    IDCLIENT             int,
    NUMERO               int not null,
@@ -103,7 +103,7 @@ create table DESISTEMENT
 /*==============================================================*/
 create table DIRECTEUR
 (
-   IDDIRECTEUR          int not null,
+   IDDIRECTEUR          int not null AUTO_INCREMENT,
    IDSOCIETE            int not null,
    NOMDIRECTEUR         varchar(191) not null,
    primary key (IDDIRECTEUR)
@@ -114,7 +114,7 @@ create table DIRECTEUR
 /*==============================================================*/
 create table IMMEUBLE
 (
-   IDIMMEUBLE           int not null,
+   IDIMMEUBLE           int not null AUTO_INCREMENT,
    IDSOCIETE            int not null,
    ADRESSE              varchar(191) not null,
    NOMIMMEUBLE          varchar(191) not null,
@@ -126,7 +126,7 @@ create table IMMEUBLE
 /*==============================================================*/
 create table PROCESVERBAL
 (
-   IDPROCESVERBAL       int not null,
+   IDPROCESVERBAL       int not null AUTO_INCREMENT,
    IDDIRECTEUR          int,
    IDCLIENT             int,
    DATEREMISE           date,
@@ -138,7 +138,7 @@ create table PROCESVERBAL
 /*==============================================================*/
 create table PROMESSE
 (
-   IDAPPARTEMENT        int not null,
+   IDAPPARTEMENT        int not null AUTO_INCREMENT,
    IDCLIENT             int not null,
    IDAVOCAT             int,
    IDDIRECTEUR          int,
@@ -153,7 +153,7 @@ create table PROMESSE
 /*==============================================================*/
 create table SOCIETE
 (
-   IDSOCIETE            int not null,
+   IDSOCIETE            int not null AUTO_INCREMENT,
    NOMSOCIETE           varchar(191) not null,
    primary key (IDSOCIETE)
 );
@@ -163,7 +163,7 @@ create table SOCIETE
 /*==============================================================*/
 create table VISITER
 (
-   IDAPPARTEMENT        int not null,
+   IDAPPARTEMENT        int not null AUTO_INCREMENT,
    IDCLIENT             int not null,
    DATEVISITE           date not null,
    REMARQUES            longtext not null,
