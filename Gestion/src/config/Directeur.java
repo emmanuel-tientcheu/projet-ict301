@@ -103,7 +103,7 @@ public class Directeur implements IDirecteur {
         try {
             Statement statement = connectDB.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
-            System.out.print("le user selectionne est ");
+            System.out.print("le directeur selectionne est ");
             while(resultSet.next()){
                 System.out.println(resultSet.getString("NOMDIRECTEUR"));
             }
