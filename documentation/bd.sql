@@ -163,11 +163,12 @@ create table SOCIETE
 /*==============================================================*/
 create table VISITER
 (
-   IDAPPARTEMENT        int not null AUTO_INCREMENT,
+   IDVISITER            int not null AUTO_INCREMENT,
+   IDAPPARTEMENT        int not null,
    IDCLIENT             int not null,
    DATEVISITE           date not null,
    REMARQUES            longtext not null,
-   primary key (IDAPPARTEMENT, IDCLIENT)
+   primary key (IDVISITER,IDAPPARTEMENT, IDCLIENT)
 );
 
 alter table APPARTEMENT add constraint FK_RELATIONSHIP_7 foreign key (IDIMMEUBLE)
