@@ -1,24 +1,29 @@
+
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
-public class MyJDBC {
+public class MyJDBC{
 
-    public static void main(String[] args) {
+    public Connection databeLink;
+    public Connection getConnection() {
 
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/testjava", "root","");
+        String databaseName = "testjava";
+        String databaseUser = "root";
+        String databsePasseword = "";
+        String url = "jdbc:mysql://localhost:3306/"+databaseName;
 
-            Statement statement = connection.createStatement();
-
-            ResultSet resultSet = statement.executeQuery("select * from produits");
-
-            while(resultSet.next()){
-                System.out.println(resultSet.getString("name"));
-            }
-        }catch (Exception e){
-            e.printStackTrace();
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            databeLink = DriverManager.getConnection(url,databaseUser,databsePasseword);
+        }catch(Exception ex){
+            ex.printStackTrace();
+            ex.getCause();
         }
+        return databeLink;
     }
 }
+
+
+
+
+
