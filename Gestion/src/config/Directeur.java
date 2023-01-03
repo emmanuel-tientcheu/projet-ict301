@@ -46,14 +46,14 @@ public class Directeur implements IDirecteur {
                       +"`IDSOCIETE`=?,"
                       +"`NOMDIRECTEUR`=?";*/
         try {
-            Statement statement = connectDB.createStatement();
+             Statement statement = connectDB.createStatement();
              statement.executeUpdate(sql);
             /*PreparedStatement prepare = connectDB.prepareStatement(sql1);
             prepare.setInt(1,1);
             prepare.setInt(2,1);
             prepare.setString(3,"emmanuel");
             prepare.execute();*/
-            
+
             System.out.println("creation reussie");
         }catch (Exception e){
             e.printStackTrace();
@@ -63,6 +63,20 @@ public class Directeur implements IDirecteur {
 
     @Override
     public Directeur updateDirecteur(Directeur directeur) {
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        String sql1 = "update directeur set"
+                +"`IDSOCIETE`=?,"
+                +"`NOMDIRECTEUR`=? where IDDIRECTEUR ='"+2+"'";
+        try{
+            PreparedStatement prepare = connectDB.prepareStatement(sql1);
+            prepare.setInt(1,1);
+            prepare.setString(2,directeur.getNomDirecteur());
+            prepare.executeUpdate();
+            System.out.println("mise a jour reussi");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return null;
     }
 
@@ -70,10 +84,10 @@ public class Directeur implements IDirecteur {
     public Directeur deleteDirecteur(Directeur directeur) {
         MyJDBC connectNow = new MyJDBC();
         Connection connectDB = connectNow.getConnection();
-        String sql ="delete from directeur where IDDIRECTEUR = '"+directeur.idDirecteur+"'";
+        String sql ="delete from directeur where IDDIRECTEUR = '"+2+"'";
         try{
             Statement statement = connectDB.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
+            statement.executeUpdate(sql);
             System.out.println("le directeur "+directeur.nomDirecteur+" a ete supprime avec success");
         }catch (Exception e){
             e.printStackTrace();
@@ -89,7 +103,10 @@ public class Directeur implements IDirecteur {
         try {
             Statement statement = connectDB.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
-            System.out.println(resultSet.getString("NOMDIRECTEUR"));
+            System.out.print("le user selectionne est ");
+            while(resultSet.next()){
+                System.out.println(resultSet.getString("NOMDIRECTEUR"));
+            }
         }catch (Exception e){
            e.printStackTrace();
         }
