@@ -53,6 +53,7 @@ public class Directeur implements IDirecteur {
             prepare.setInt(2,1);
             prepare.setString(3,"emmanuel");
             prepare.execute();*/
+            
             System.out.println("creation reussie");
         }catch (Exception e){
             e.printStackTrace();
