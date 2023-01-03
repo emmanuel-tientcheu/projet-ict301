@@ -1,5 +1,5 @@
 package config;
-
+import java.sql.*;
 public class Societe implements  ISociete{
     private int idSociete;
     private String nomSociete;
@@ -28,6 +28,8 @@ public class Societe implements  ISociete{
 
     @Override
     public Societe createSociete(Societe societe) {
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
         return null;
     }
 
