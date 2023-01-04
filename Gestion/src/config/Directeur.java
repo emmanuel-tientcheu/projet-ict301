@@ -41,19 +41,9 @@ public class Directeur implements IDirecteur {
         Connection connectDB = connectNow.getConnection();
         String sql = "insert into directeur (IDSOCIETE,NOMDIRECTEUR)" +
                      "values('"+directeur.getIdSociete()+"','"+directeur.getNomDirecteur()+"')";
-        /*String sql1 = "INSERT INTO directeur"
-                      +"`IDDIRECTEUR`=?,"
-                      +"`IDSOCIETE`=?,"
-                      +"`NOMDIRECTEUR`=?";*/
         try {
              Statement statement = connectDB.createStatement();
              statement.executeUpdate(sql);
-            /*PreparedStatement prepare = connectDB.prepareStatement(sql1);
-            prepare.setInt(1,1);
-            prepare.setInt(2,1);
-            prepare.setString(3,"emmanuel");
-            prepare.execute();*/
-
             System.out.println("creation reussie");
         }catch (Exception e){
             e.printStackTrace();
