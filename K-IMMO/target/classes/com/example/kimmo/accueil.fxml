@@ -41,7 +41,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="536.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="536.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="com.example.kimmo.ControllerAccueil" >
    <children>
       <AnchorPane prefHeight="500.0" prefWidth="545.0">
          <children>
@@ -54,11 +54,11 @@
       </AnchorPane>
       <AnchorPane prefHeight="536.0" prefWidth="368.0" style="-fx-background-color: WHITE;">
          <children>
-            <ImageView fitHeight="174.0" fitWidth="214.0" layoutX="59.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../frontend_javaproject/frontend_javaproject/customer.png" />
-               </image>
-            </ImageView>
+<!--            <ImageView fitHeight="174.0" fitWidth="214.0" layoutX="59.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">-->
+<!--               <image>-->
+<!--                  <Image url="@../frontend_javaproject/frontend_javaproject/customer.png" />-->
+<!--               </image>-->
+<!--            </ImageView>-->
             <Button fx:id="btn_service" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="71.0" layoutY="288.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #194E72;" text="SERVICE K-IMMO" textFill="#f8f5f5">
                <font>
                   <Font name="System Bold" size="14.0" />
