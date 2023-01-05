@@ -4,19 +4,21 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Date;
+import java.sql.Date;
 
 public class Visiter  implements  IVisiter{
     private int idAppartement;
     private int idClient;
     private Date dateVisite;
     private String remarques;
+    private int idVisiter;
 
-    public Visiter(int idAppartement , int idClient , Date dateVisite , String remarques){
+    public Visiter(int idAppartement , int idClient , Date dateVisite , String remarques, int idVisiter){
         this.idAppartement = idAppartement;
         this.idClient = idClient;
         this.dateVisite = dateVisite;
         this.remarques = remarques;
+        this.idVisiter=idVisiter;
     }
     public int getIdAppartement() {
         return idAppartement;
@@ -54,8 +56,8 @@ public class Visiter  implements  IVisiter{
     public Visiter createVisiter(Visiter visiter) {
         MyJDBC connectNow = new MyJDBC();
         Connection connectDB = connectNow.getConnection();
-        String sql = "insert into visiter (IDAPPARTEMENT,IDCLIENT,DATEVISITE)" +
-                "values('"+visiter.getIdAppartement()+"','"+visiter.getIdClient()+"',,'"+visiter.getDateVisite()+"')";
+        String sql = "insert into visiter (IDVISITER,IDAPPARTEMENT,IDCLIENT,DATEVISITE,REMARQUES)" +
+                "values('"+visiter.getIdVisiter()+"','"+visiter.getIdAppartement()+"','"+visiter.getIdClient()+"','"+(java.sql.Date)visiter.getDateVisite()+"','"+visiter.getRemarques()+"')";
         try {
             Statement statement = connectDB.createStatement();
             statement.executeUpdate(sql);
@@ -73,12 +75,14 @@ public class Visiter  implements  IVisiter{
         String sql1 = "update visiter set"
                 +"`IDAPPARTEMENT`=?,"
                 +"`IDCLIENT`=?,"
-                +"`DATEVISITE`=? where IDVISITER ='"+2+"'";
+                +"`DATEVISITE`=?,"
+                +"`REMARQUES`=? where IDVISITER ='"+2+"'";
         try{
             PreparedStatement prepare = connectDB.prepareStatement(sql1);
             prepare.setInt(1,visiter.getIdAppartement());
             prepare.setInt(2,visiter.getIdClient());
             prepare.setDate(3, (java.sql.Date) visiter.getDateVisite());
+            prepare.setString(4,visiter.getRemarques());
             prepare.executeUpdate();
             System.out.println("mise a jour reussi");
         }catch (Exception e){
@@ -119,5 +123,46 @@ public class Visiter  implements  IVisiter{
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void creationPromesseDeVente(){
+
+    }
+    public static int getAll(){
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        String sql = "select * from visiter";
+        String verification = "";
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            System.out.print("la visite selectionne est ");
+            while(resultSet.next()){
+                System.out.println(resultSet.getString("IDVISITER"));
+                // System.out.println(resultSet.getString("NOMDIRECTEUR").getClass().getSimpleName());
+                verification = resultSet.getString("IDVISITER");
+
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        if(verification.length()>0){
+            return Integer.parseInt(verification) ;
+
+        }else{
+            verification = "0";
+            return Integer.parseInt(verification) ;
+
+        }
+    }
+
+    public int getIdVisiter() {
+        return idVisiter;
+    }
+
+    public void setIdVisiter(int idVisiter) {
+        this.idVisiter = idVisiter;
     }
 }

@@ -16,15 +16,20 @@ public class Promesse implements  IPromesse{
     private boolean isSigner;
     private Date dateSignature;
 
-    public Promesse(int idPromesse , int idAppartement , int idClient , int idAvocat , int idDirecteur , boolean statut , boolean isSigner ,Date dateSignature){
-        this.setIdPromesse(idPromesse);
-        this.setIdAppartement(idAppartement);
-        this.setIdClient(idClient);
-        this.setIdAvocat(idAvocat);
-        this.setIdDirecteur(idDirecteur);
-        this.setStatut(statut);
-        this.setSigner(isSigner);
-        this.setDateSignature(dateSignature);
+    private float prix_vente;
+    private float avance;
+
+    public Promesse(int idPromesse , int idAppartement , int idClient , int idAvocat , int idDirecteur , boolean statut , boolean isSigner ,Date dateSignature,float prix_vente ,float avance){
+        this.idPromesse = idPromesse;
+        this.idAppartement = idAppartement;
+        this.idClient = idClient;
+        this.idAvocat = idAvocat;
+        this.idDirecteur = idDirecteur;
+        this.statut = statut;
+        this.isSigner = isSigner;
+        this.dateSignature = dateSignature;
+        this.setPrix_vente(prix_vente);
+        this.setAvance(avance);
     }
 
     public int getIdPromesse() {
@@ -89,6 +94,21 @@ public class Promesse implements  IPromesse{
 
     public void setDateSignature(Date dateSignature) {
         this.dateSignature = dateSignature;
+    }
+    public float getPrix_vente() {
+        return prix_vente;
+    }
+
+    public void setPrix_vente(float prix_vente) {
+        this.prix_vente = prix_vente;
+    }
+
+    public float getAvance() {
+        return avance;
+    }
+
+    public void setAvance(float avance) {
+        this.avance = avance;
     }
 
     @Override
@@ -168,4 +188,6 @@ public class Promesse implements  IPromesse{
         }
         return null;
     }
+
+
 }
