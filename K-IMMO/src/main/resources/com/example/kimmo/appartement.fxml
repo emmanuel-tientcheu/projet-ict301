@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="780.0" style="-fx-background-color: #162234;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kimmo.HelloController">
+   <children>
+      <AnchorPane fx:id="pane1" layoutX="80.0" layoutY="321.0" prefHeight="200.0" prefWidth="701.0" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="79.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="301.0">
+         <children>
+            <ImageView fitHeight="152.0" fitWidth="200.0" layoutX="228.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images_appart/Images_appart/decoration_appartement.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="152.0" fitWidth="200.0" layoutX="444.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images_appart/Images_appart/decoration_appartement.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="152.0" fitWidth="200.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images_appart/Images_appart/decoration_appartement.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pane2" layoutX="79.0" layoutY="301.0" prefHeight="200.0" prefWidth="701.0" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="79.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="301.0">
+         <children>
+            <ImageView fitHeight="152.0" fitWidth="200.0" layoutX="228.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images_appart/Images_appart/design-moderne-appartement-de-ville.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="152.0" fitWidth="200.0" layoutX="14.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images_appart/Images_appart/design-moderne-appartement-de-ville.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="152.0" fitWidth="200.0" layoutX="444.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images_appart/Images_appart/design-moderne-appartement-de-ville.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pane3" layoutX="79.0" layoutY="311.0" prefHeight="200.0" prefWidth="701.0" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="79.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="301.0">
+         <children>
+            <ImageView fitHeight="152.0" fitWidth="200.0" layoutX="228.0" opacity="0.45" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images_appart/Images_appart/design-moderne-appartement-de-ville.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="152.0" fitWidth="200.0" layoutX="444.0" opacity="0.45" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images_appart/Images_appart/design-moderne-appartement-de-ville.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="152.0" fitWidth="200.0" layoutX="14.0" opacity="0.45" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images_appart/Images_appart/design-moderne-appartement-de-ville.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="580.0" prefWidth="80.0" styleClass="sidebar" stylesheets="@Stylesheet.css">
+         <children>
+            <ImageView fitHeight="45.0" fitWidth="51.0" layoutX="18.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/icons8_easy_listening_filled_50px.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="34.0" fitWidth="32.0" layoutX="24.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/icons8_hearts_50px.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="34.0" fitWidth="32.0" layoutX="27.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/icons8_details_popup_filled_50px.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="34.0" fitWidth="32.0" layoutX="27.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/icons8_browse_podcasts_30px.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="34.0" fitWidth="32.0" layoutX="27.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/icons8_audio_wave_64px.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Label layoutX="102.0" layoutY="24.0" prefHeight="45.0" prefWidth="127.0" text="Espace Client" textFill="WHITE">
+         <font>
+            <Font name="Microsoft JhengHei Bold" size="18.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER_LEFT" layoutX="346.0" layoutY="31.0" prefHeight="32.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="25.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/icons8_search_50px.png" />
+               </image>
+            </ImageView>
+            <VBox prefHeight="32.0" prefWidth="11.0" />
+            <TextField />
+         </children>
+      </HBox>
+      <ImageView fitHeight="34.0" fitWidth="32.0" layoutX="249.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/icons8_angle_left_32px_2.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="34.0" fitWidth="32.0" layoutX="281.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/icons8_angle_right_32px_1.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="122.0" layoutY="69.0" prefHeight="32.0" prefWidth="184.0" text="LE MEILLEUR CHOIX" textFill="#fd0e55">
+         <font>
+            <Font name="Microsoft JhengHei Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="122.0" layoutY="101.0" prefHeight="45.0" prefWidth="322.0" text="K-IMMO Appartement" textFill="WHITE">
+         <font>
+            <Font name="Microsoft JhengHei Bold" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="120.0" layoutY="140.0" prefHeight="32.0" prefWidth="322.0" text="De l'année" textFill="WHITE">
+         <font>
+            <Font name="Microsoft JhengHei Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="122.0" layoutY="175.0" prefHeight="25.0" prefWidth="498.0" text="Faites vos meilleures reservations d'appartements ici chez nous , sécurité  assurée" textFill="WHITE">
+         <font>
+            <Font name="Microsoft JhengHei" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="122.0" layoutY="194.0" prefHeight="25.0" prefWidth="412.0" text="dans la meilleure entreprise de la capitale" textFill="WHITE">
+         <font>
+            <Font name="Microsoft JhengHei" size="13.0" />
+         </font>
+      </Label>
+      <Button fx:id="next" layoutX="715.0" layoutY="264.0" mnemonicParsing="false" onAction="#next" text="next" />
+      <Button fx:id="prev" layoutX="91.0" layoutY="264.0" mnemonicParsing="false" onAction="#prev" text="prev" />
+   </children>
+</AnchorPane>
