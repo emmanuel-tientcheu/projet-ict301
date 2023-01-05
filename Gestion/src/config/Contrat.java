@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Date;
+import java.sql.Date;
 
 public class Contrat implements IContrat{
     private int idContrat;

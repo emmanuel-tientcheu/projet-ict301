@@ -14,6 +14,10 @@ public class Desistement implements IDesistement {
     private Date date;
     private String causes;
     private boolean isValider;
+    public int idPromesse;
+    public int idDirecteur;
+    public int idAvocat;
+
 
     public Desistement(int idDesistement , int idAppartement, int idClient , int numero , Date date,String causes, boolean isValider){
         this.idDesistement = idDesistement;
