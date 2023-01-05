@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="550.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="55.0" layoutY="175.0" prefHeight="27.0" prefWidth="195.0" text="Numero de l'appartement : 1">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="56.0" layoutY="220.0" text="Superficie : 3500 m2">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="171.0" layoutY="53.0" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: arsh;" />
+      <Label layoutX="104.0" layoutY="33.0" prefHeight="40.0" prefWidth="376.0" text="Constitution de la promesse de vente" textAlignment="CENTER" textFill="#588bae">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="54.0" layoutY="341.0" text="Entrer la somme que vous voulez avancer :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfgadget_num" layoutX="320.0" layoutY="337.0" prefHeight="27.0" prefWidth="126.0" promptText="Enter Gadget Number" />
+      <Text layoutX="55.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous voulez constituer une promesse de vente sur l'appartemet A1" textAlignment="CENTER" />
+      <Label layoutX="55.0" layoutY="257.0" text="Nombre de chambres : 3 Chambres">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="54.0" layoutY="300.0" text="Prix provisionnel : 35 000 000 Fcfa">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="btn_admin1" alignment="CENTER" layoutX="110.0" layoutY="389.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="306.0" style="-fx-background-color: #194E72;" text="Valider" textAlignment="CENTER" textFill="#f8f0f0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

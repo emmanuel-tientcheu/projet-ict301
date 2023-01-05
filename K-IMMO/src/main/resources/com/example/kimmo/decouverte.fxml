@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane cache="true" prefHeight="356.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@gros-plan-jeune-femme-seduisante-charismatique-isolee_273609-35522-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Text fill="#194e72" layoutX="14.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appartement 1">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <Button fx:id="btn_service" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="35.0" layoutY="304.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #194E72;" text="Voir plus" textFill="#f8f5f5">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Text layoutX="18.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Superficie : 3500m2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix : 35 000 000 Fcfa">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3 Chambres">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="356.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@gros-plan-jeune-femme-seduisante-charismatique-isolee_273609-35522-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Text fill="#194e72" layoutX="14.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appartement A1">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <Button fx:id="btn_service1" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="35.0" layoutY="304.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #194E72;" text="Voir plus" textFill="#f8f5f5">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Text layoutX="18.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Superficie : 3500m2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix : 35 000 000 Fcfa">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3 Chambres">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="356.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@gros-plan-jeune-femme-seduisante-charismatique-isolee_273609-35522-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Text fill="#194e72" layoutX="14.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appartement A1">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <Button fx:id="btn_service11" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="35.0" layoutY="304.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #194E72;" text="Voir plus" textFill="#f8f5f5">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Text layoutX="18.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Superficie : 3500m2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix : 35 000 000 Fcfa">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3 Chambres">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>
