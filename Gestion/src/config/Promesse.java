@@ -12,14 +12,13 @@ public class Promesse implements  IPromesse{
     private int idClient;
     private int idAvocat;
     private int idDirecteur;
-    private boolean statut;
-    private boolean isSigner;
+    private int statut;
+    private int isSigner;
     private Date dateSignature;
-
     private float prix_vente;
     private float avance;
 
-    public Promesse(int idPromesse , int idAppartement , int idClient , int idAvocat , int idDirecteur , boolean statut , boolean isSigner ,Date dateSignature,float prix_vente ,float avance){
+    public Promesse(int idPromesse , int idAppartement , int idClient , int idAvocat , int idDirecteur , int statut , int isSigner ,Date dateSignature,float prix_vente ,float avance){
         this.idPromesse = idPromesse;
         this.idAppartement = idAppartement;
         this.idClient = idClient;
@@ -72,19 +71,19 @@ public class Promesse implements  IPromesse{
         this.idDirecteur = idDirecteur;
     }
 
-    public boolean isStatut() {
+    public int isStatut() {
         return statut;
     }
 
-    public void setStatut(boolean statut) {
+    public void setStatut(int statut) {
         this.statut = statut;
     }
 
-    public boolean isSigner() {
+    public int isSigner() {
         return isSigner;
     }
 
-    public void setSigner(boolean signer) {
+    public void setSigner(int signer) {
         isSigner = signer;
     }
 
@@ -115,8 +114,8 @@ public class Promesse implements  IPromesse{
     public Promesse createPromesse(Promesse promesse) {
         MyJDBC connectNow = new MyJDBC();
         Connection connectDB = connectNow.getConnection();
-        String sql = "insert into promesse (IDAPPARTEMENT,IDCLIENT,IDAVOCAT,IDDIRECTEUR,STATUT,ISSIGNER,DATESIGNATURE)" +
-                "values('"+promesse.idAppartement+"','"+ promesse.idClient+"','"+ promesse.idAvocat+"','"+ promesse.idDirecteur+"',,'"+ promesse.statut+"','\"+ promesse.idClient+\"')";
+        String sql = "insert into promesse (IDAPPARTEMENT,IDCLIENT,IDAVOCAT,IDDIRECTEUR,STATUT,ISSIGNER,DATESIGNATURE,IDPROMESSE,PRIX_VENTE,AVANCE)" +
+                "values('"+promesse.idAppartement+"','"+ promesse.idClient+"','"+ promesse.idAvocat+"','"+ promesse.idDirecteur+"','"+1+"','"+0+"','"+ promesse.dateSignature+"','"+ promesse.idPromesse+"','"+ promesse.prix_vente+"','"+ promesse.avance+"')";
         try {
             Statement statement = connectDB.createStatement();
             statement.executeUpdate(sql);
@@ -138,16 +137,20 @@ public class Promesse implements  IPromesse{
                 +"`IDDIRECTEUR`=?,"
                 +"`STATUT`=?,"
                 +"`ISSIGNER`=?,"
-                +"`DATESIGNATURE`=? where IDPROMESSE ='"+2+"'";
+                +"`DATESIGNATURE`=?,"
+                +"`PRIX_VENTE`=?,"
+                +"`AVANCE`=? where IDPROMESSE ='"+2+"'";
         try{
             PreparedStatement prepare = connectDB.prepareStatement(sql1);
             prepare.setInt(1,promesse.getIdAppartement());
             prepare.setInt(2,promesse.getIdClient());
             prepare.setInt(3,promesse.getIdAvocat());
-            prepare.setBoolean(4,promesse.statut);
-            prepare.setBoolean(5,promesse.isSigner);
-            prepare.setDate(6,(java.sql.Date)promesse.dateSignature);
-
+            prepare.setInt(4,promesse.getIdDirecteur());
+            prepare.setInt(5,promesse.statut);
+            prepare.setInt(6,promesse.isSigner);
+            prepare.setDate(7,(java.sql.Date)promesse.dateSignature);
+            prepare.setFloat(8,promesse.getPrix_vente());
+            prepare.setFloat(9,promesse.getAvance());
             prepare.executeUpdate();
             System.out.println("mise a jour reussi");
         }catch (Exception e){
@@ -188,6 +191,38 @@ public class Promesse implements  IPromesse{
         }
         return null;
     }
+    public static int getAll(){
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        String sql = "select * from promesse";
+        String verification = "";
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            System.out.print("la promesse selectionne est ");
+            while(resultSet.next()){
+                System.out.println(resultSet.getString("IDPROMESSE"));
+                // System.out.println(resultSet.getString("NOMDIRECTEUR").getClass().getSimpleName());
+                verification = resultSet.getString("IDPROMESSE");
 
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        if(verification.length()>0){
+            return Integer.parseInt(verification) ;
+
+        }else{
+            verification = "0";
+            return Integer.parseInt(verification) ;
+
+        }
+    }
+
+    public static void creationDesistement(){
+
+    }
 
 }

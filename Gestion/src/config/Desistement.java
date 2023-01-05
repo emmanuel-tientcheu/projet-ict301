@@ -16,13 +16,13 @@ public class Desistement implements IDesistement {
     private boolean isValider;
 
     public Desistement(int idDesistement , int idAppartement, int idClient , int numero , Date date,String causes, boolean isValider){
-        this.setIdDesistement(idDesistement);
-        this.setIdAppartement(idAppartement);
-        this.setIdClient(idClient);
-        this.setNumero(numero);
-        this.setDate(date);
-        this.setCauses(causes);
-        this.setValider(isValider);
+        this.idDesistement = idDesistement;
+        this.idAppartement = idAppartement;
+        this.idClient = idClient;
+        this.numero = numero;
+        this.date = date;
+        this.causes = causes;
+        this.isValider = isValider;
     }
 
     public int getIdDesistement() {
