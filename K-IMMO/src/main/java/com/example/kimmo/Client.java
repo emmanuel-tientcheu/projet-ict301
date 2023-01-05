@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+
 
 public class Client implements IClient {
     private int idClient;
@@ -156,5 +158,56 @@ public class Client implements IClient {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static int getAll(){
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        String sql = "select * from client";
+        String verification = "";
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+           // System.out.print("la desistement selectionne est ");
+            while(resultSet.next()){
+                System.out.println(resultSet.getString("IDCLIENT"));
+                // System.out.println(resultSet.getString("NOMDIRECTEUR").getClass().getSimpleName());
+                verification = resultSet.getString("IDCLIENT");
+
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        if(verification.length()>0){
+            return Integer.parseInt(verification) ;
+
+        }else{
+            verification = "0";
+            return Integer.parseInt(verification) ;
+
+        }
+    }
+
+    public static ArrayList<Client> getClientTable(){
+        ArrayList<Client> clientTable = new ArrayList<>();
+        int compteur = 1;
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        String sql = "select * from client";
+        try{
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                clientTable.add( new Client(resultSet.getInt("IDCLIENT"),resultSet.getString("NUMERO_CNI"),resultSet.getString("NOM"),resultSet.getString("PRENOM"),resultSet.getString("ADRESSEC"),resultSet.getString("TELEPHONE"),resultSet.getString("PROFESSION")));
+                compteur++;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        System.out.println(clientTable.get(0).nom);
+        return clientTable ;
+
     }
 }

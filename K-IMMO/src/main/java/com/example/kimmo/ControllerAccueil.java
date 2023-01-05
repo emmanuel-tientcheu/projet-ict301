@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ControllerAccueil implements Initializable {
@@ -30,7 +31,11 @@ public class ControllerAccueil implements Initializable {
         btn_service.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBUtils.changeover(actionEvent, "clientLogin.fxml","SERVICES");
+              //  DBUtils.changeover(actionEvent, "clientLogin.fxml","SERVICES");
+
+                ArrayList<Client> clientTable = new ArrayList<>();
+                clientTable=Client.getClientTable();
+                System.out.println(clientTable.size());
             }
         });
 
