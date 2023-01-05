@@ -223,6 +223,7 @@ public class Promesse implements  IPromesse{
 
     public static void creationDesistement(Promesse promesse,int numero,String cause){
         promesse.isSigner = 0 ;
+        promesse.updatePromesse(promesse);
         int id = Desistement.getAll()+1;
         Desistement desistement = new Desistement(id,promesse.getIdAppartement(),promesse.getIdClient(),numero,new Date(2023-01-03),cause,promesse.isSigner,promesse.getIdPromesse(),promesse.getIdDirecteur(),promesse.getIdAvocat());
         desistement.createDesistement(desistement);

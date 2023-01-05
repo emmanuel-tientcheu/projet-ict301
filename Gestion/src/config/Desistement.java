@@ -223,4 +223,26 @@ public class Desistement implements IDesistement {
     public void setIdAvocat(int idAvocat) {
         this.idAvocat = idAvocat;
     }
+
+    public static void validationDesistement(Desistement desistement){
+        desistement.isValider = 1;
+        desistement.updateDesistement(desistement);
+
+        System.out.print("redaction d'une lettre de desistement ");
+        System.out.println("une avance vous seras restituer");
+
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        String sql = "select * from promesse where IDPROMESSE = '"+desistement.idPromesse+"' AND IDCLIENT = '"+desistement.idClient+"'";
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            System.out.print("l'anvance restituer est de ");
+            while(resultSet.next()){
+                System.out.println(resultSet.getString("AVANCE"));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
