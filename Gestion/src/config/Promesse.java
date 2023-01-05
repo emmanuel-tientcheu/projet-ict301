@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Date;
+import java.sql.Date;
 
 public class Promesse implements  IPromesse{
     private int idPromesse;
@@ -28,8 +28,8 @@ public class Promesse implements  IPromesse{
         this.statut = statut;
         this.isSigner = isSigner;
         this.dateSignature = dateSignature;
-        this.setPrix_vente(prix_vente);
-        this.setAvance(avance);
+        this.prix_vente = prix_vente;
+        this.avance = avance;
     }
 
     public int getIdPromesse() {

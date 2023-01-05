@@ -11,7 +11,7 @@ public class Main {
         directeur.deleteDirecteur(directeur);
         directeur.getDirecteur(3);*/
         Visiter visiter = new Visiter(1,1,new Date(2023-01-03),"tres propre",Visiter.getAll()+1);
-        visiter.deleteVisiter(visiter);
-        System.out.println("id"+Visiter.getAll());
+        visiter.creationPromesse();
+       // System.out.println("id"+Visiter.getAll());
     }
 }

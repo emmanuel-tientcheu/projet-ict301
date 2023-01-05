@@ -125,9 +125,7 @@ public class Visiter  implements  IVisiter{
         return null;
     }
 
-    public void creationPromesseDeVente(){
 
-    }
     public static int getAll(){
         MyJDBC connectNow = new MyJDBC();
         Connection connectDB = connectNow.getConnection();
@@ -164,5 +162,15 @@ public class Visiter  implements  IVisiter{
 
     public void setIdVisiter(int idVisiter) {
         this.idVisiter = idVisiter;
+    }
+
+    public static void creationPromesse(){
+        Promesse promesse = new Promesse(1,1,1,1,1,true,false,new Date(2023-01-03),200,25);
+        if((promesse.getPrix_vente()*20)/100 < promesse.getAvance()){
+            System.out.println("impossible de cree cette promesse car l'avance est insuffisant");
+        }else{
+            System.out.println("la promesse seras cree");
+
+        }
     }
 }
