@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class controllerMakePromise implements Initializable {
@@ -31,5 +32,13 @@ public class controllerMakePromise implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+
+    }
+    public  void setinfo(String ids, String supperficie, String numChambre, String prix)
+    {
+        numRoom.setText(numChambre);
+        id.setText(ids);
+        price.setText(prix);
+        superfici.setText(supperficie);
     }
 }

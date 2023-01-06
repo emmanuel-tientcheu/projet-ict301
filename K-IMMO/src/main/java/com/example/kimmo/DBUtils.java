@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.Calendar;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class DBUtils {
@@ -30,11 +31,37 @@ public class DBUtils {
             e.printStackTrace();
         }
 
+
+
         Stage stage =(Stage)((Node) actionevent.getSource()).getScene().getWindow();
         stage.setTitle(title);
         stage.setScene(new Scene(root,800,550));
         stage.show();
 
+    }
+
+    public static void changeOvercard(ActionEvent actionevent, String fxml, String title, String ids, String supperficie, String numChambre, String prix) {
+        Parent root=null;
+        AtomicReference<Double> x = new AtomicReference<>((double) 0);
+        AtomicReference<Double> y = new AtomicReference<>((double) 0);
+
+        Calendar calendar = Calendar.getInstance();
+        java.util.Date starDate=new java.sql.Date(calendar.getTime().getTime());
+        try{
+            FXMLLoader loader= new FXMLLoader(DBUtils.class.getResource(fxml));
+            root =loader.load();
+            controllerMakePromise controllermakepromise=loader.getController();
+            controllermakepromise.setinfo(ids,supperficie,numChambre,prix);
+            Scene scene=new Scene(root,1000,600);
+            Stage stage =new Stage();
+            stage.setScene(scene);
+
+
+            stage.show();
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public static void logInUser(ActionEvent actionEvent,String NUMERO_CNI) throws SQLException, IOException {

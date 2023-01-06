@@ -56,7 +56,7 @@ public class controllerCard implements Initializable {
                     FXMLLoader loader= new FXMLLoader(DBUtils.class.getResource("detailApart.fxml"));
                     root =loader.load();
                     controllerDetailApart CD=loader.getController();
-                    CD.setId("1");
+                    CD.setId(idApart.getText());
                     Scene scene=new Scene(root,600,400);
                     Stage stage =new Stage();
                     stage.setScene(scene);
@@ -81,4 +81,5 @@ public class controllerCard implements Initializable {
         numRoom.setText(String.valueOf(apartement.getNombre_chambre()));
 
     }
+
 }

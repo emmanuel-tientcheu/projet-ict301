@@ -28,8 +28,9 @@ public class controllerDetailApart implements Initializable {
         btndopromise.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
-                DBUtils.changeover(actionEvent,"makePromise.fxml","WELCOME");
+                Appartement appartInfo =Appartement.getAppartId(Integer.parseInt(txtid.getText()));
+                System.out.println(appartInfo);
+                DBUtils.changeOvercard(actionEvent,"makePromise.fxml","WELCOME",Integer.toString(appartInfo.getIdAppartement()) ,Float.toString(appartInfo.getSuperficie()) ,Integer.toString(appartInfo.getNombre_chambre()) ,Float.toString(appartInfo.getPrix_previsionnel()) );
             }
         });
     }

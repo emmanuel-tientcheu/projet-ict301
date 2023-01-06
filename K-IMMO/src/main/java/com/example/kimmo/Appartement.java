@@ -134,6 +134,7 @@ public class Appartement implements IAppartement{
     public Appartement getAppartement(int idAppartement) {
         MyJDBC connectNow = new MyJDBC();
         Connection connectDB = connectNow.getConnection();
+        Appartement appartement = null;
         String sql = "select * from appartement where IDAPPARTEMENT = '"+idAppartement+"'";
         try {
             Statement statement = connectDB.createStatement();
@@ -141,11 +142,12 @@ public class Appartement implements IAppartement{
             System.out.print("l'appartement selectionne est ");
             while(resultSet.next()){
                 System.out.println(resultSet.getString("NUMERO"));
+                appartement = new Appartement(resultSet.getInt("IDAPPARTEMENT"), resultSet.getInt("IDIMMEUBLE"), resultSet.getInt("NUMERO"),resultSet.getFloat("SUPERFICIE"),resultSet.getFloat("PRIX_PREVISIONNEL"),resultSet.getInt("NBRE_CHAMBRE") );
             }
         }catch (Exception e){
             e.printStackTrace();
         }
-        return null;
+        return appartement;
     }
 
     public static ArrayList<Appartement> getAppartementTable(){
@@ -196,5 +198,25 @@ public class Appartement implements IAppartement{
             return Integer.parseInt(verification) ;
 
         }
+    }
+
+
+    public static Appartement getAppartId(int idAppartement) {
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        Appartement appartement = null;
+        String sql = "select * from appartement where IDAPPARTEMENT = '"+idAppartement+"'";
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            System.out.print("l'appartement selectionne est ");
+            while(resultSet.next()){
+                System.out.println(resultSet.getString("NUMERO"));
+                appartement = new Appartement(resultSet.getInt("IDAPPARTEMENT"), resultSet.getInt("IDIMMEUBLE"), resultSet.getInt("NUMERO"),resultSet.getFloat("SUPERFICIE"),resultSet.getFloat("PRIX_PREVISIONNEL"),resultSet.getInt("NBRE_CHAMBRE") );
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return appartement;
     }
 }
