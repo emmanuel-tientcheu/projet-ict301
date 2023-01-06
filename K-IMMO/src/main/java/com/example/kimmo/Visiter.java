@@ -167,13 +167,16 @@ public class Visiter  implements  IVisiter{
     public static void creationPromesse(Visiter visiter , int idAvocat,float avance,float prix_vente){
         int id = Promesse.getAll()+1;
         Promesse promesse = new Promesse(id,visiter.getIdAppartement(),visiter.getIdClient(),idAvocat,1,0,0,visiter.getDateVisite(),prix_vente,avance);
-        if((promesse.getPrix_vente()*20)/100 < promesse.getAvance()){
+        if((promesse.getPrix_vente()*20)/100 > promesse.getAvance()){
             System.out.println("impossible de cree cette promesse car l'avance est insuffisant");
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("impossible de cree cette promesse car l'avance est insuffisant");
             alert.show();
         }else{
             System.out.println("la promesse seras cree");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("la promesse a bien ete cree");
+            alert.show();
             promesse.createPromesse(promesse);
         }
     }
