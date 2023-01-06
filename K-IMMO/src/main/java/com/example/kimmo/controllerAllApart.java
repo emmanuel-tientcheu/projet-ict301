@@ -40,15 +40,25 @@ public class controllerAllApart implements Initializable {
 
     }
     private List<Appartement> getList(){
+
          List<Appartement> ls = new ArrayList<>();
-        Appartement appartement = new Appartement(1,2,23,500,3000,6);
-        ls.add(appartement);
 
-        Appartement appartement2 = new Appartement(1,2,23,500,3000,6);
-        ls.add(appartement);
+        ArrayList<Appartement> getpromiselist = new ArrayList<>();
+        getpromiselist=Appartement.getAppartementTable();
 
-        Appartement appartement3 = new Appartement(1,2,23,500,3000,6);
-        ls.add(appartement);
+        for (Appartement appartement : getpromiselist) {
+            ls.add(appartement);
+        }
+
+
+//        Appartement appartement = new Appartement(1,2,23,500,3000,6);
+//        ls.add(appartement);
+//
+//        Appartement appartement2 = new Appartement(1,2,23,500,3000,6);
+//        ls.add(appartement);
+//
+//        Appartement appartement3 = new Appartement(1,2,23,500,3000,6);
+//        ls.add(appartement);
 
         return ls;
     }
