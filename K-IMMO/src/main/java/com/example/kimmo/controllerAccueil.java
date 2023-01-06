@@ -31,10 +31,10 @@ public class controllerAccueil implements Initializable {
         btn_service.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-              //  DBUtils.changeover(actionEvent, "clientLogin.fxml","SERVICES");
-
-                ArrayList<Client> clientTable = new ArrayList<>();
-                clientTable=Client.getClientTable();
+                DBUtils.changeover(actionEvent, "clientLogin.fxml","SERVICES");
+//                MyJDBC.getConnection();
+                ArrayList<Promesse> clientTable = new ArrayList<>();
+                clientTable=Promesse.getPromesseTable();
                 System.out.println(clientTable.size());
             }
         });

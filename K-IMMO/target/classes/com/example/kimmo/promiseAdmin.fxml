@@ -9,20 +9,21 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kimmo.controllerPromise">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kimmo.controllerPromiseAdmin">
    <children>
-      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="709.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TableView fx:id="clinicTable" layoutY="253.0" prefHeight="350.0" prefWidth="600.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <TableView fx:id="promiseAdminTable" layoutY="253.0" prefHeight="350.0" prefWidth="600.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <columns>
-                  <TableColumn fx:id="idAppart" prefWidth="128.80002439022064" text="IDAPPARTEMENT" />
-                  <TableColumn fx:id="idclient" prefWidth="80.79998779296875" text="IDCLIENT" />
-                  <TableColumn fx:id="idavocat" prefWidth="72.800048828125" text="IDAVOCAT" />
-                  <TableColumn fx:id="idd" prefWidth="90.0" text="IDDIRECTEUR" />
-                  <TableColumn fx:id="hospitalCol" prefWidth="71.0" text="STATUT" />
-                  <TableColumn fx:id="dateCol" prefWidth="112.0" text="ISSIGNER" />
-                  <TableColumn fx:id="qtytasteCol1" prefWidth="112.79998779296875" text="DATE SIGNATURE" />
+                  <TableColumn fx:id="idAppart" prefWidth="104.0" text="IDAPPARTEMENT" />
+                  <TableColumn fx:id="idclient" prefWidth="74.4000244140625" text="IDCLIENT" />
+                  <TableColumn fx:id="idavocat" prefWidth="64.800048828125" text="IDAVOCAT" />
+                  <TableColumn fx:id="iddirecteur" prefWidth="93.5999755859375" text="IDDIRECTEUR" />
+                  <TableColumn fx:id="status" prefWidth="43.99993896484375" text="STATUT" />
+                  <TableColumn fx:id="issign" prefWidth="48.0" text="ISSIGNER" />
+                  <TableColumn fx:id="avance" prefWidth="322.39996337890625" text="AVANCE" />
+                  <TableColumn fx:id="prix_vente" prefWidth="72.7999267578125" text="PRIX VENTE" />
+                  <TableColumn fx:id="date1" minWidth="0.0" prefWidth="75.20001220703125" text="DATE SIGNATURE" />
                </columns>
             </TableView>
             <Pane layoutX="-1.0" layoutY="68.0" prefHeight="4.0" prefWidth="578.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
