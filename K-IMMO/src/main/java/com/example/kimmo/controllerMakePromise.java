@@ -42,7 +42,7 @@ public class controllerMakePromise implements Initializable {
             public void handle(ActionEvent actionEvent) {
                 Visiter vis = Visiter.getVisiters(Integer.parseInt(idvisite.getText()));
                 System.out.println(vis.getDateVisite());
-                Visiter.creationPromesse(vis,1,Float.parseFloat(advance.getText()));
+                Visiter.creationPromesse(vis,1,Float.parseFloat(advance.getText()),Float.parseFloat(price.getText()));
 //                DBUtils.changeover(actionEvent,"accueil.fxml","WELCOME TO MAIN PAGE");
             }
         });
