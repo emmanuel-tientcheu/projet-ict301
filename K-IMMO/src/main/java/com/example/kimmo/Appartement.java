@@ -166,4 +166,33 @@ public class Appartement implements IAppartement{
         return appartementTable ;
 
     }
+    public static int getAll(){
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        String sql = "select * from appartement";
+        String verification = "";
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            // System.out.print("la desistement selectionne est ");
+            while(resultSet.next()){
+                System.out.println(resultSet.getString("IDAPPARTEMENT"));
+                // System.out.println(resultSet.getString("NOMDIRECTEUR").getClass().getSimpleName());
+                verification = resultSet.getString("IDAPPARTEMENT");
+
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        if(verification.length()>0){
+            return Integer.parseInt(verification) ;
+
+        }else{
+            verification = "0";
+            return Integer.parseInt(verification) ;
+
+        }
+    }
 }
