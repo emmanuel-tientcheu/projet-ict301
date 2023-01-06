@@ -246,5 +246,26 @@ public class Promesse implements  IPromesse {
 
     }
 
+    public static ArrayList<Promesse> getPromesseTableClient(int idclient){
+        ArrayList<Promesse> promesseTable = new ArrayList<>();
+        int compteur = 1;
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        String sql = "select * from promesse where IDCLIENT = '"+idclient+"'";
+        try{
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                promesseTable.add(new Promesse(resultSet.getInt("IDPROMESSE"), resultSet.getInt("IDAPPARTEMENT"), resultSet.getInt("IDCLIENT"), resultSet.getInt("IDAVOCAT"), resultSet.getInt("IDDIRECTEUR"), resultSet.getInt("STATUT"), resultSet.getInt("ISSIGNER"),resultSet.getDate("DATESIGNATURE"),resultSet.getFloat("PRIX_VENTE"),resultSet.getFloat("AVANCE") ));
+                compteur++;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        System.out.println(promesseTable.get(0).isSigner);
+        return promesseTable ;
+
+    }
+
 
 }

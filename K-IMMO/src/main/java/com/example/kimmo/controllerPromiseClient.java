@@ -156,7 +156,7 @@ public class controllerPromiseClient implements Initializable {
             promiselist.clear();
 
                 ArrayList<Promesse> getpromiselist = new ArrayList<>();
-                getpromiselist=Promesse.getPromesseTable();
+                getpromiselist=Promesse.getPromesseTableClient(2);
 
             for (Promesse promesse : getpromiselist) {
                 promiselist.add(promesse);
