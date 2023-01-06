@@ -149,4 +149,34 @@ public class Visiter  implements  IVisiter{
         return visiterTable ;
 
     }
+
+    public static int getAll(){
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        String sql = "select * from visiter";
+        String verification = "";
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            // System.out.print("le directeur selectionne est ");
+            while(resultSet.next()){
+                System.out.println(resultSet.getString("IDVISITER"));
+                // System.out.println(resultSet.getString("NOMDIRECTEUR").getClass().getSimpleName());
+                verification = resultSet.getString("IDVISITER");
+
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        if(verification.length()>0){
+            return Integer.parseInt(verification) ;
+
+        }else{
+            verification = "0";
+            return Integer.parseInt(verification) ;
+
+        }
+    }
 }
