@@ -83,7 +83,7 @@ public class controllerAccount implements Initializable {
     }
 
     public void promise (ActionEvent actionEvent) throws IOException {
-        Parent root= FXMLLoader.load(getClass().getResource("promiseAdmin.fxml"));
+        Parent root= FXMLLoader.load(getClass().getResource("promiseClient.fxml"));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(root);
     }
