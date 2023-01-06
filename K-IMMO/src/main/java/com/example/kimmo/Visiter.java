@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 public class Visiter  implements  IVisiter{
     public int idVisiter;
@@ -177,6 +177,17 @@ public class Visiter  implements  IVisiter{
             verification = "0";
             return Integer.parseInt(verification) ;
 
+        }
+    }
+
+    public static void creationPromesse(Visiter visiter , int idAvocat){
+        int id = Promesse.getAll()+1;
+        Promesse promesse = new Promesse(id,visiter.getIdAppartement(),visiter.getIdClient(),idAvocat,1,0,0,visiter.getDateVisite(),200,25);
+        if((promesse.getPrix_vente()*20)/100 < promesse.getAvance()){
+            System.out.println("impossible de cree cette promesse car l'avance est insuffisant");
+        }else{
+            System.out.println("la promesse seras cree");
+            promesse.createPromesse(promesse);
         }
     }
 }

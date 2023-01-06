@@ -28,7 +28,6 @@ public class controllerDetailApart implements Initializable {
         btndopromise.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
                 DBUtils.changeover(actionEvent,"makePromise.fxml","WELCOME");
             }
         });
