@@ -1,5 +1,7 @@
 package com.example.kimmo;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -22,6 +24,9 @@ public class controllerMakePromise implements Initializable {
     private Label id;
 
     @FXML
+    private Label idvisite;
+
+    @FXML
     private Label numRoom;
 
     @FXML
@@ -32,13 +37,22 @@ public class controllerMakePromise implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
+        btnvalidate.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Visiter vis = Visiter.getVisiters(Integer.parseInt(idvisite.getText()));
+                System.out.println(vis.getDateVisite());
+                Visiter.creationPromesse(vis,1,Float.parseFloat(advance.getText()));
+//                DBUtils.changeover(actionEvent,"accueil.fxml","WELCOME TO MAIN PAGE");
+            }
+        });
     }
-    public  void setinfo(String ids, String supperficie, String numChambre, String prix)
+    public  void setinfo(String ids, String supperficie, String numChambre, String prix,String idv)
     {
         numRoom.setText(numChambre);
         id.setText(ids);
         price.setText(prix);
         superfici.setText(supperficie);
+        idvisite.setText(idv);
     }
 }

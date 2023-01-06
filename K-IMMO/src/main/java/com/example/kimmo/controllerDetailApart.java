@@ -44,7 +44,7 @@ public class controllerDetailApart implements Initializable {
                 Visiter newvisite = new Visiter(visiteTable.size(),Integer.parseInt(txtid.getText()) ,Integer.parseInt(txtuser.getText()),date,txtremark.getText());
                 Visiter.createVisiterss(newvisite);
 //                System.out.println(appartInfo);
-                DBUtils.changeOvercard(actionEvent,"makePromise.fxml","WELCOME",Integer.toString(appartInfo.getIdAppartement()) ,Float.toString(appartInfo.getSuperficie()) ,Integer.toString(appartInfo.getNombre_chambre()) ,Float.toString(appartInfo.getPrix_previsionnel()) );
+                DBUtils.changeOvercard(actionEvent,"makePromise.fxml","WELCOME",Integer.toString(appartInfo.getIdAppartement()) ,Float.toString(appartInfo.getSuperficie()) ,Integer.toString(appartInfo.getNombre_chambre()) ,Float.toString(appartInfo.getPrix_previsionnel()),Integer.toString(newvisite.getIdVisiter())  );
             }
         });
     }

@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="550.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kimmo.controllerMakePromise">
    <children>
-      <Label layoutX="55.0" layoutY="175.0" prefHeight="27.0" prefWidth="195.0" text="Numero de l'appartement : ">
+      <Label layoutX="41.0" layoutY="175.0" prefHeight="27.0" prefWidth="195.0" text="Numero de l'appartement : ">
          <font>
             <Font size="14.0" />
          </font>
@@ -51,5 +51,11 @@
       <Label fx:id="superfici" layoutX="139.0" layoutY="222.0" text="XXm2" />
       <Label fx:id="numRoom" layoutX="215.0" layoutY="259.0" text="XX" />
       <Label fx:id="price" layoutX="172.0" layoutY="302.0" text="XXX fcfa" />
+      <Label layoutX="47.0" layoutY="152.0" prefHeight="27.0" prefWidth="195.0" text="Numero de l'appartement : ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="idvisite" layoutX="229.0" layoutY="157.0" text="XX" />
    </children>
 </AnchorPane>

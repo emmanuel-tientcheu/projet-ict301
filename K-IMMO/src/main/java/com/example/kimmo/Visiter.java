@@ -2,6 +2,8 @@ package com.example.kimmo;
 
 //package config;
 
+import javafx.scene.control.Alert;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -107,21 +109,9 @@ public class Visiter  implements  IVisiter{
 
     @Override
     public Visiter getVisiter(Visiter idVisiter) {
-        MyJDBC connectNow = new MyJDBC();
-        Connection connectDB = connectNow.getConnection();
-        String sql = "select * from visiter where IDVISITER = '"+idVisiter+"'";
-        try {
-            Statement statement = connectDB.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
-            System.out.print("la visite conserne le departement ");
-            while(resultSet.next()){
-                System.out.println(resultSet.getString("IDAPPARTEMENT"));
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
         return null;
     }
+
 
     public static ArrayList<Visiter> getVisiterTable(){
         ArrayList<Visiter> visiterTable = new ArrayList<>();
@@ -174,15 +164,37 @@ public class Visiter  implements  IVisiter{
         }
     }
 
-    public static void creationPromesse(Visiter visiter , int idAvocat){
+    public static void creationPromesse(Visiter visiter , int idAvocat,float avance){
         int id = Promesse.getAll()+1;
-        Promesse promesse = new Promesse(id,visiter.getIdAppartement(),visiter.getIdClient(),idAvocat,1,0,0,visiter.getDateVisite(),200,25);
+        Promesse promesse = new Promesse(id,visiter.getIdAppartement(),visiter.getIdClient(),idAvocat,1,0,0,visiter.getDateVisite(),200,avance);
         if((promesse.getPrix_vente()*20)/100 < promesse.getAvance()){
             System.out.println("impossible de cree cette promesse car l'avance est insuffisant");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("impossible de cree cette promesse car l'avance est insuffisant");
+            alert.show();
         }else{
             System.out.println("la promesse seras cree");
             promesse.createPromesse(promesse);
         }
+    }
+
+    public static Visiter getVisiters(int idVisiter) {
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        Visiter vist = null;
+        String sql = "select * from visiter where IDVISITER = '"+idVisiter+"'";
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            System.out.print("la visite conserne le departement ");
+            while(resultSet.next()){
+                vist = new Visiter( resultSet.getInt("IDVISITER"),resultSet.getInt("IDAPPARTEMENT"), resultSet.getInt("IDCLIENT"),resultSet.getDate("DATEVISITE"), resultSet.getString("IDVISITER"));
+                System.out.println(resultSet.getString("IDAPPARTEMENT"));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return vist;
     }
 
     public static void createVisiterss(Visiter visiter) {

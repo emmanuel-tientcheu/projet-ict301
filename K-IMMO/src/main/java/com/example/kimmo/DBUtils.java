@@ -40,7 +40,7 @@ public class DBUtils {
 
     }
 
-    public static void changeOvercard(ActionEvent actionevent, String fxml, String title, String ids, String supperficie, String numChambre, String prix) {
+    public static void changeOvercard(ActionEvent actionevent, String fxml, String title, String ids, String supperficie, String numChambre, String prix,String idvisite) {
         Parent root=null;
         AtomicReference<Double> x = new AtomicReference<>((double) 0);
         AtomicReference<Double> y = new AtomicReference<>((double) 0);
@@ -51,7 +51,7 @@ public class DBUtils {
             FXMLLoader loader= new FXMLLoader(DBUtils.class.getResource(fxml));
             root =loader.load();
             controllerMakePromise controllermakepromise=loader.getController();
-            controllermakepromise.setinfo(ids,supperficie,numChambre,prix);
+            controllermakepromise.setinfo(ids,supperficie,numChambre,prix,idvisite);
             Scene scene=new Scene(root,1000,600);
             Stage stage =new Stage();
             stage.setScene(scene);
