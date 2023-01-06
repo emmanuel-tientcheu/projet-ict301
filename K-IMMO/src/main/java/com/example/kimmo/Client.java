@@ -146,20 +146,18 @@ public class Client implements IClient {
     public Client getClient(int idClient) {
         MyJDBC connectNow = new MyJDBC();
         Connection connectDB = connectNow.getConnection();
-        Client client = null ;
         String sql = "select * from client where IDDIRECTEUR = '"+idClient+"'";
         try {
             Statement statement = connectDB.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
             System.out.print("le client selectionne est ");
             while(resultSet.next()){
-                client = new Client(resultSet.getInt("IDCLIENT"),resultSet.getString("NUMERO_CNI"), resultSet.getString("NOM"),resultSet.getString("PRENOM"),resultSet.getString("ADRESSEC"),resultSet.getString("TELEPHONE"),resultSet.getString("PROFESSION"));
                 System.out.println(resultSet.getString("NOM"));
             }
         }catch (Exception e){
             e.printStackTrace();
         }
-        return client;
+        return null;
     }
 
     public static int getAll(){
