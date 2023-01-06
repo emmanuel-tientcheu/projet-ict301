@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class Appartement implements IAppartement{
     public int idAppartement;
@@ -15,12 +16,12 @@ public class Appartement implements IAppartement{
     public int nombre_chambre;
 
     public Appartement(int idAppartement , int idImmeuble , int numero , float superficie , float prix_previsionnel , int nombre_chambre){
-        this.setIdAppartement(idAppartement);
-        this.setIdImmeuble(idImmeuble);
-        this.setNumero(numero);
-        this.setSuperficie(superficie);
-        this.setPrix_previsionnel(prix_previsionnel);
-        this.setNombre_chambre(nombre_chambre);
+        this.idAppartement = idAppartement;
+        this.idImmeuble = idImmeuble;
+        this.numero = numero;
+        this.superficie = superficie;
+        this.prix_previsionnel = prix_previsionnel;
+        this.nombre_chambre = nombre_chambre;
     }
 
     public int getIdAppartement() {
@@ -143,5 +144,26 @@ public class Appartement implements IAppartement{
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static ArrayList<Appartement> getAppartementTable(){
+        ArrayList<Appartement> appartementTable = new ArrayList<>();
+        int compteur = 1;
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        String sql = "select * from appartement";
+        try{
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                appartementTable.add( new Appartement(resultSet.getInt("IDAPPARTEMENT"), resultSet.getInt("IDIMMEUBLE"), resultSet.getInt("NUMERO"), resultSet.getFloat("SUPERFICIE"),resultSet.getFloat("PRIX_PREVISIONNEL"), resultSet.getInt("NBRE_CHAMBRE") ));
+                compteur++;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        System.out.println(appartementTable.get(0).prix_previsionnel);
+        return appartementTable ;
+
     }
 }

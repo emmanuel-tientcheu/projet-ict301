@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Contrat implements IContrat{
@@ -12,14 +13,16 @@ public class Contrat implements IContrat{
     private int idAppartement;
     private String typePaiement;
     private Date dateSignature;
+    public int idAvocat;
 
-    public Contrat(int idContrat , int idDirecteur,int idClient,int idAppartement , String typePaiement,Date dateSignature){
-        this.setIdContrat(idContrat);
-        this.setIdDirecteur(idDirecteur);
-        this.setIdClient(idClient);
-        this.setIdAppartement(idAppartement);
-        this.setTypePaiement(typePaiement);
-        this.setDateSignature(dateSignature);
+    public Contrat(int idContrat , int idDirecteur,int idClient,int idAppartement , String typePaiement,Date dateSignature,int idAvocat){
+        this.idContrat = idContrat;
+        this.idDirecteur = idDirecteur;
+        this.idClient = idClient;
+        this.idAppartement = idAppartement;
+        this.typePaiement = typePaiement;
+        this.dateSignature = dateSignature;
+        this.idAvocat = idAvocat;
     }
 
     public int getIdContrat() {
@@ -69,13 +72,15 @@ public class Contrat implements IContrat{
     public void setDateSignature(Date dateSignature) {
         this.dateSignature = dateSignature;
     }
+    public int getIdAvocat(){return  idAvocat;}
+    public void setIdAvocat(int idAvocat){ this.idAvocat = idAvocat; };
 
     @Override
     public Contrat createContrat(Contrat contrat) {
         MyJDBC connectNow = new MyJDBC();
         Connection connectDB = connectNow.getConnection();
-        String sql = "insert into contrat (IDDIRECTEUR,IDCLIENT,IDAPPARTEMENT,TYPEPAIEMENT,DATESIGNATURE)" +
-                "values('"+contrat.getIdDirecteur()+"','"+contrat.getIdClient()+"','"+contrat.getIdAppartement()+"','"+contrat.getTypePaiement()+"','"+contrat.getDateSignature()+"')";
+        String sql = "insert into contrat (IDDIRECTEUR,IDCLIENT,IDAPPARTEMENT,TYPEPAIEMENT,DATESIGNATURE,IDAVOCAT)" +
+                "values('"+contrat.getIdDirecteur()+"','"+contrat.getIdClient()+"','"+contrat.getIdAppartement()+"','"+contrat.getTypePaiement()+"','"+contrat.getDateSignature()+"','"+contrat.getIdAvocat()+"')";
         try {
             Statement statement = connectDB.createStatement();
             statement.executeUpdate(sql);
@@ -95,7 +100,8 @@ public class Contrat implements IContrat{
                 +"`IDCLIENT`=?,"
                 +"`IDAPPARTEMENT`=?,"
                 +"`TYPEPAIEMENT`=?,"
-                +"`DATESIGNATURE`=? where IDCONTRAT ='"+2+"'";
+                +"`DATESIGNATURE`=?,"
+                +"`IDAVOCAT`=? where IDCONTRAT ='"+2+"'";
         try{
             PreparedStatement prepare = connectDB.prepareStatement(sql1);
             prepare.setInt(1,contrat.getIdDirecteur());
@@ -103,6 +109,7 @@ public class Contrat implements IContrat{
             prepare.setInt(3,contrat.getIdAppartement());
             prepare.setString(4,contrat.getTypePaiement());
             prepare.setDate(5,(java.sql.Date) contrat.getDateSignature());
+            prepare.setInt(6,contrat.getIdAvocat());
             prepare.executeUpdate();
             System.out.println("mise a jour reussi");
         }catch (Exception e){
@@ -142,5 +149,26 @@ public class Contrat implements IContrat{
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static ArrayList<Contrat> getContratTable(){
+        ArrayList<Contrat> contratTable = new ArrayList<>();
+        int compteur = 1;
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        String sql = "select * from contrat";
+        try{
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                contratTable.add( new Contrat(resultSet.getInt("IDCONTRAT"), resultSet.getInt("IDDIRECTEUR"), resultSet.getInt("IDCLIENT"), resultSet.getInt("IDAPPARTEMENT"),resultSet.getString("TYPEPAIEMENT"),resultSet.getDate("DATESIGNATURE"),resultSet.getInt("IDAVOCAT")));
+                compteur++;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        System.out.println(contratTable.get(0).typePaiement);
+        return contratTable ;
+
     }
 }

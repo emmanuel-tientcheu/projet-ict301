@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class Avocat implements IAvocat {
     private int idAvocat;
@@ -14,12 +15,12 @@ public class Avocat implements IAvocat {
     private String numeroAutorisation;
 
     public Avocat(int idAvocat , String nomA , String prenomA , String adresseA ,String telephoneA , String numeroAutorisation){
-        this.setIdAvocat(idAvocat);
-        this.setNomA(nomA);
-        this.setPrenomA(prenomA);
-        this.setAdresseA(adresseA);
-        this.setTelephoneA(telephoneA);
-        this.setNumeroAutorisation(numeroAutorisation);
+        this.idAvocat = idAvocat;
+        this.nomA = nomA;
+        this.prenomA = prenomA;
+        this.adresseA = adresseA;
+        this.telephoneA = telephoneA;
+        this.numeroAutorisation = numeroAutorisation;
     }
 
     public int getIdAvocat() {
@@ -144,5 +145,26 @@ public class Avocat implements IAvocat {
         }
 
         return null;
+    }
+
+    public static ArrayList<Avocat> getAvocatTable(){
+        ArrayList<Avocat> avocatTable = new ArrayList<>();
+        int compteur = 1;
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        String sql = "select * from avocat";
+        try{
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                avocatTable.add(new Avocat(resultSet.getInt("IDAVOCAT"),resultSet.getString("NOMA"), resultSet.getString("PRENOMA"), resultSet.getString("ADRESSAA"), resultSet.getString("TELEPHONEA"), resultSet.getString("NUMEROAUTORISATION") ));
+                compteur++;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        System.out.println(avocatTable.get(0).nomA);
+        return avocatTable ;
+
     }
 }
