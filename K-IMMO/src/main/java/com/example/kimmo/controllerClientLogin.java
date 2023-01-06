@@ -16,17 +16,17 @@ import java.util.ResourceBundle;
 
 public class controllerClientLogin implements Initializable {
 
-    @FXML private Button btnadd_admin;
+    @FXML
+    private Button btnadd_admin;
 
-    @FXML private Button btn_reset;
+    @FXML
+    private Button btnlogin_admin;
 
-    @FXML private Button btnlogin_admin;
+    @FXML
+    private Button btnreturn;
 
-    @FXML private Button btnreturn;
-
-    @FXML private TextField tfadmin_mat;
-
-    @FXML private TextField tfadmin_pwd;
+    @FXML
+    private TextField tfCNI;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //the button that reset the textfield
@@ -34,7 +34,7 @@ public class controllerClientLogin implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 tfadmin_pwd.clear();
-                tfadmin_mat.clear();
+                tfCNI.clear();
 
             }
         });
@@ -56,7 +56,7 @@ public class controllerClientLogin implements Initializable {
 //                DBUtils.changeover(actionEvent,"mainpage2.fxml","WELCOME TO MAIN PAGE");
 //                changehigh(actionEvent, "sliderAdmin_Menu.fxml","ADMINISTRATION");
 
-//                if (tfadmin_mat.getText().trim().isEmpty() || tfadmin_pwd.getText().trim().isEmpty()) {
+//                if (tfCNI.getText().trim().isEmpty() || tfadmin_pwd.getText().trim().isEmpty()) {
 //
 //
 //                    Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -66,7 +66,7 @@ public class controllerClientLogin implements Initializable {
 //                } else {
 //
 //                    try {
-//                        DBUtils.logInUser(actionEvent,tfadmin_mat.getText(),tfadmin_pwd.getText());
+//                        DBUtils.logInUser(actionEvent,tfCNI.getText(),tfadmin_pwd.getText());
 //
 //                    } catch (SQLException e) {
 //                        e.printStackTrace();
