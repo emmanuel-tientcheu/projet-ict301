@@ -86,7 +86,7 @@ public class Client implements IClient {
         MyJDBC connectNow = new MyJDBC();
         Connection connectDB = connectNow.getConnection();
         String sql = "insert into client (IDCLIENT,NUMERO_CNI,NOM,PRENOM,ADRESSEC,TELEPHONE,PROFESSION)" +
-                "values('"+client.getIdClient()+"','"+client.getNumero_cni()+"','"+client.getNom()+"',,'"+client.getPrenom()+"','"+client.getAdresseC()+"',,'"+client.getTelephone()+"','"+client.getProfession()+"')";
+                "values('"+client.getIdClient()+"','"+client.getNumero_cni()+"','"+client.getNom()+"','"+client.getPrenom()+"','"+client.getAdresseC()+"','"+client.getTelephone()+"','"+client.getProfession()+"')";
         try {
             Statement statement = connectDB.createStatement();
             statement.executeUpdate(sql);

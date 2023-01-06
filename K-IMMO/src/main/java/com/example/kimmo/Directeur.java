@@ -42,8 +42,8 @@ public class Directeur implements IDirecteur {
     public Directeur createDirecteur(Directeur directeur) {
         MyJDBC connectNow = new MyJDBC();
         Connection connectDB = connectNow.getConnection();
-        String sql = "insert into directeur (IDSOCIETE,NOMDIRECTEUR)" +
-                "values('"+directeur.getIdSociete()+"','"+directeur.getNomDirecteur()+"')";
+        String sql = "insert into directeur (IDDIRECTEUR,IDSOCIETE,NOMDIRECTEUR)" +
+                "values('"+directeur.getIdDirecteur()+"','"+directeur.getIdSociete()+"','"+directeur.getNomDirecteur()+"')";
         try {
             Statement statement = connectDB.createStatement();
             statement.executeUpdate(sql);
@@ -105,5 +105,35 @@ public class Directeur implements IDirecteur {
         }
 
         return null;
+    }
+
+    public static int getAll(){
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        String sql = "select * from directeur";
+        String verification = "";
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            System.out.print("le directeur selectionne est ");
+            while(resultSet.next()){
+                System.out.println(resultSet.getString("IDDIRECTEUR"));
+                // System.out.println(resultSet.getString("NOMDIRECTEUR").getClass().getSimpleName());
+                verification = resultSet.getString("IDDIRECTEUR");
+
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        if(verification.length()>0){
+            return Integer.parseInt(verification) ;
+
+        }else{
+            verification = "0";
+            return Integer.parseInt(verification) ;
+
+        }
     }
 }
