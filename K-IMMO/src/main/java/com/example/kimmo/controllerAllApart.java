@@ -50,16 +50,6 @@ public class controllerAllApart implements Initializable {
             ls.add(appartement);
         }
 
-
-//        Appartement appartement = new Appartement(1,2,23,500,3000,6);
-//        ls.add(appartement);
-//
-//        Appartement appartement2 = new Appartement(1,2,23,500,3000,6);
-//        ls.add(appartement);
-//
-//        Appartement appartement3 = new Appartement(1,2,23,500,3000,6);
-//        ls.add(appartement);
-
         return ls;
     }
 }
