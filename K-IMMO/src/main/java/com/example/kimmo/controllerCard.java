@@ -55,8 +55,9 @@ public class controllerCard implements Initializable {
 
                     FXMLLoader loader= new FXMLLoader(DBUtils.class.getResource("detailApart.fxml"));
                     root =loader.load();
+
                     controllerDetailApart CD=loader.getController();
-                    CD.setId(idApart.getText());
+                    CD.setId(idApart.getText(),"1");
                     Scene scene=new Scene(root,600,400);
                     Stage stage =new Stage();
                     stage.setScene(scene);

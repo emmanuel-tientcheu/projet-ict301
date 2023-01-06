@@ -23,6 +23,9 @@ public class Visiter  implements  IVisiter{
         this.dateVisite = dateVisite;
         this.remarques = remarques;
     }
+
+
+
     public int getIdAppartement() {
         return idAppartement;
     }
@@ -39,8 +42,9 @@ public class Visiter  implements  IVisiter{
         this.idClient = idClient;
     }
 
-    public Date getDateVisite() {
-        return dateVisite;
+    public java.sql.Date getDateVisite() {
+        java.sql.Date sqlDate = new java.sql.Date(this.dateVisite.getTime());
+        return sqlDate;
     }
 
     public void setDateVisite(Date dateVisite) {
@@ -58,19 +62,9 @@ public class Visiter  implements  IVisiter{
     public int getIdVisiter(){return idVisiter;}
     public void setIdVisiter(int idVisiter){this.idVisiter = idVisiter;}
 
+
     @Override
     public Visiter createVisiter(Visiter visiter) {
-        MyJDBC connectNow = new MyJDBC();
-        Connection connectDB = connectNow.getConnection();
-        String sql = "insert into visiter (IDAPPARTEMENT,IDCLIENT,DATEVISITE)" +
-                "values('"+visiter.getIdAppartement()+"','"+visiter.getIdClient()+"',,'"+visiter.getDateVisite()+"')";
-        try {
-            Statement statement = connectDB.createStatement();
-            statement.executeUpdate(sql);
-            System.out.println("creation reussie de la visite");
-        }catch (Exception e){
-            e.printStackTrace();
-        }
         return null;
     }
 
@@ -190,4 +184,20 @@ public class Visiter  implements  IVisiter{
             promesse.createPromesse(promesse);
         }
     }
+
+    public static void createVisiterss(Visiter visiter) {
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        int id =Visiter.getAll()+1;
+        String sql = "insert into visiter (IDAPPARTEMENT,IDCLIENT,DATEVISITE,REMARQUES,IDVISITER)" +
+                "values('"+visiter.getIdAppartement()+"','"+visiter.getIdClient()+"','"+visiter.getDateVisite()+"','"+visiter.getRemarques()+"','"+id+"')";
+        try {
+            Statement statement = connectDB.createStatement();
+            statement.executeUpdate(sql);
+            System.out.println("creation reussie de la visite");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }
