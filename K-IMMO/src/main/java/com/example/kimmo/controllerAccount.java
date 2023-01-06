@@ -17,20 +17,36 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerAccount implements Initializable {
+public class controllerAccount implements Initializable {
     // @FXML private ImageView exit;
 
-    @FXML private Label menu;
-
-    @FXML private Label menuback;
 
     @FXML
-    private AnchorPane slider;
+    private AnchorPane anchorleft;
+
+    @FXML
+    private AnchorPane anchortop;
+
+    @FXML
+    private Button btnappart;
+
+    @FXML
+    private Button btnclose;
+
+    @FXML
+    private Button btndiscrimate;
+
+    @FXML
+    private Button btnexit;
+
+    @FXML
+    private Button btnpromise;
 
     @FXML
     private StackPane contentArea;
 
-    @FXML private Button btnexit;
+    @FXML
+    private AnchorPane slider;
 
 
 
@@ -46,42 +62,8 @@ public class ControllerAccount implements Initializable {
             }
         });
 
-        menu.setOnMouseClicked(event ->{
-            TranslateTransition slide =new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.5));
-            slide.setNode(slider);
-
-            slide.setToX(0);
-            slide.play();
-
-            slider.setTranslateX(-220);
-
-            slide.setOnFinished((ActionEvent e)->{
-                menu.setVisible(false);
-                menuback.setVisible(true);
-            });
-        });
-
-
-
-        menuback.setOnMouseClicked(event ->{
-            TranslateTransition slide =new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.5));
-            slide.setNode(slider);
-
-            slide.setToX(-220);
-            slide.play();
-
-            slider.setTranslateX(0);
-
-            slide.setOnFinished((ActionEvent e)->{
-                menu.setVisible(true);
-                menuback.setVisible(false);
-            });
-        });
-
         try{
-            Parent root= FXMLLoader.load(getClass().getResource("welcomeAdmin.fxml"));
+            Parent root= FXMLLoader.load(getClass().getResource("allApart.fxml"));
             contentArea.getChildren().removeAll();
             contentArea.getChildren().setAll(root);
         } catch (IOException e) {
@@ -94,8 +76,8 @@ public class ControllerAccount implements Initializable {
         System.exit(0);
     }
 
-    public void dashboard (ActionEvent actionEvent) throws IOException {
-        Parent root= FXMLLoader.load(getClass().getResource("2servicepage.fxml"));
+    public void apart (ActionEvent actionEvent) throws IOException {
+        Parent root= FXMLLoader.load(getClass().getResource("allApart.fxml"));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(root);
     }
@@ -112,15 +94,4 @@ public class ControllerAccount implements Initializable {
         contentArea.getChildren().setAll(root);
     }
 
-    public void statistic(ActionEvent actionEvent) throws IOException {
-        Parent root= FXMLLoader.load(getClass().getResource("statistic.fxml"));
-        contentArea.getChildren().removeAll();
-        contentArea.getChildren().setAll(root);
-    }
-
-    public void clinic (ActionEvent actionEvent) throws IOException {
-        Parent root= FXMLLoader.load(getClass().getResource("update_clinic.fxml"));
-        contentArea.getChildren().removeAll();
-        contentArea.getChildren().setAll(root);
-    }
 }

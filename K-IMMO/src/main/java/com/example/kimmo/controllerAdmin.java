@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerAdmin implements Initializable {
+public class controllerAdmin implements Initializable {
    // @FXML private ImageView exit;
 
     @FXML private Label menu;

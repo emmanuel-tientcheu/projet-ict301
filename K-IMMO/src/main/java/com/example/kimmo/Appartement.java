@@ -23,6 +23,8 @@ public class Appartement implements IAppartement{
         this.setNombre_chambre(nombre_chambre);
     }
 
+
+
     public int getIdAppartement() {
         return idAppartement;
     }

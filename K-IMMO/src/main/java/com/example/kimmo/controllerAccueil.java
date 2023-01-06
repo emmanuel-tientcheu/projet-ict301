@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerAccueil implements Initializable {
+public class controllerAccueil implements Initializable {
 
     @FXML
     private Button btn_admin;

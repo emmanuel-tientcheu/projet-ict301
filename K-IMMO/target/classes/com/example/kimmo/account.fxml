@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kimmo.controllerAccount">
    <children>
       <BorderPane layoutX="24.0" layoutY="15.0" prefHeight="540.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -27,7 +26,7 @@
                      <children>
                         <VBox layoutX="69.0" layoutY="-10.0" prefHeight="489.0" prefWidth="200.0" style="-fx-background-color: #547E9A;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Button fx:id="dashboard" alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="50.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="235.0" style="-fx-background-color: #496E86;" text="AVAILABLE APPART" textFill="#fcf9f9">
+                              <Button fx:id="btnappart" alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="50.0" mnemonicParsing="false" onAction="#apart" prefHeight="58.0" prefWidth="235.0" style="-fx-background-color: #496E86;" text="AVAILABLE APPART" textFill="#fcf9f9">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
@@ -35,12 +34,12 @@
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button fx:id="dashboard1" alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="30.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="231.0" style="-fx-background-color: #496E86;" text="PROMISE DOCUMENT" textFill="#fcf9f9">
+                              <Button fx:id="btnpromise" alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="30.0" mnemonicParsing="false" onAction="#promise" prefHeight="58.0" prefWidth="231.0" style="-fx-background-color: #496E86;" text="PROMISE DOCUMENT" textFill="#fc79c7">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="btnbuilder" alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="204.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="232.0" style="-fx-background-color: #496E86;" text="DISCRIMATE DOCUMENT" textFill="#fcf9f9">
+                              <Button fx:id="btndiscrimate" alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="204.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="232.0" style="-fx-background-color: #496E86;" text="DISCRIMATE DOCUMENT" textFill="#fcf9f9">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>

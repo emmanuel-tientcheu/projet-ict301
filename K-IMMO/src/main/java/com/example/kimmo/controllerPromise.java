@@ -25,7 +25,7 @@ import java.sql.*;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-public class ControllerPromise implements Initializable {
+public class controllerPromise implements Initializable {
 
 
     @FXML

@@ -25,7 +25,7 @@ import java.sql.*;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-public class ControllerDisclaimer implements Initializable {
+public class controllerDisclaimer implements Initializable {
 
 
     @FXML

@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 
-public class ControllerClientLogin implements Initializable {
+public class controllerClientLogin implements Initializable {
 
     @FXML private Button btnadd_admin;
 
@@ -39,6 +39,7 @@ public class ControllerClientLogin implements Initializable {
             }
         });
 
+
         //return to the mainpage2
         btnreturn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -51,6 +52,7 @@ public class ControllerClientLogin implements Initializable {
         btnlogin_admin.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                DBUtils.changeover(actionEvent,"account.fxml","WELCOME TO MAIN PAGE");
 //                DBUtils.changeover(actionEvent,"mainpage2.fxml","WELCOME TO MAIN PAGE");
 //                changehigh(actionEvent, "sliderAdmin_Menu.fxml","ADMINISTRATION");
 
