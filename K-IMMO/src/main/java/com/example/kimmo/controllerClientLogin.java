@@ -30,7 +30,10 @@ public class controllerClientLogin implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //the button that reset the textfield
-
+//<<<<<<< HEAD
+//
+//=======
+//>>>>>>> 83c3549ce86c03ec854c3df7ebc8fa9609c41983
 
 
         //return to the mainpage2
@@ -45,29 +48,17 @@ public class controllerClientLogin implements Initializable {
         btnlogin_admin.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBUtils.changeover(actionEvent,"account.fxml","WELCOME TO MAIN PAGE");
-//                DBUtils.changeover(actionEvent,"mainpage2.fxml","WELCOME TO MAIN PAGE");
-//                changehigh(actionEvent, "sliderAdmin_Menu.fxml","ADMINISTRATION");
 
-//                if (tfCNI.getText().trim().isEmpty() || tfadmin_pwd.getText().trim().isEmpty()) {
-//
-//
-//                    Alert alert = new Alert(Alert.AlertType.WARNING);
-//                    alert.setContentText("Please enter the Matricule and password");
-//                    alert.show();
-//
-//                } else {
-//
-//                    try {
-//                        DBUtils.logInUser(actionEvent,tfCNI.getText(),tfadmin_pwd.getText());
-//
-//                    } catch (SQLException e) {
-//                        e.printStackTrace();
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//
-//                }
+                if (tfCNI.getText().trim().isEmpty()) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setContentText("Please enter A CNI");
+                    alert.show();
+
+                } else {
+                    
+
+                    DBUtils.changeover(actionEvent,"account.fxml","WELCOME TO MAIN PAGE");
+                }
             }
         });
 
