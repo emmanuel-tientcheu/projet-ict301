@@ -26,11 +26,13 @@ public class controllerAllApart implements Initializable {
             for (Appartement apart:
                     allapart) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
+
                 fxmlLoader. setLocation(getClass().getResource( "card.fxml"));
                 HBox cardBox = null;
                 cardBox = fxmlLoader.load();
                 controllerCard cardController = fxmlLoader.getController();
-                cardController.setData(apart); appartLayout.getChildren().add(cardBox);
+                cardController.setData(apart);
+                appartLayout.getChildren().add(cardBox);
 
             }
         } catch (IOException e) {
@@ -49,7 +51,6 @@ public class controllerAllApart implements Initializable {
         for (Appartement appartement : getpromiselist) {
             ls.add(appartement);
         }
-
         return ls;
     }
 }

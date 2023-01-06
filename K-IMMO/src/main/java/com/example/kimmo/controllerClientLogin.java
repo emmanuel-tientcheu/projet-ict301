@@ -30,14 +30,7 @@ public class controllerClientLogin implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //the button that reset the textfield
-        btn_reset.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                tfadmin_pwd.clear();
-                tfCNI.clear();
 
-            }
-        });
 
 
         //return to the mainpage2
