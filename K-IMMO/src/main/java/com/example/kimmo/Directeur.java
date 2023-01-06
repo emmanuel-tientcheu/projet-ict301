@@ -2,6 +2,7 @@ package com.example.kimmo;
 
 //package config;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Directeur implements IDirecteur {
     public int idDirecteur;
@@ -135,5 +136,26 @@ public class Directeur implements IDirecteur {
             return Integer.parseInt(verification) ;
 
         }
+    }
+
+    public static ArrayList<Directeur> getDirecteurTable(){
+        ArrayList<Directeur> directeurTable = new ArrayList<>();
+        int compteur = 1;
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        String sql = "select * from directeur";
+        try{
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                directeurTable.add(new Directeur(resultSet.getInt("IDDIRECTEUR"), resultSet.getInt("IDSOCIETE"), resultSet.getString("NOMDIRECTEUR") ));
+                compteur++;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        System.out.println(directeurTable.get(0).nomDirecteur);
+        return directeurTable ;
+
     }
 }

@@ -6,7 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Date;
+import java.util.ArrayList;
+import java.sql.Date;
 
 public class ProcesVerbale implements IProcesVerbale {
     private int idProcesVerbale;
@@ -15,10 +16,10 @@ public class ProcesVerbale implements IProcesVerbale {
     private Date dateRemise;
 
     public ProcesVerbale(int idProcesVerbale , int idDirecteur ,int idClient , Date dateRemise){
-        this.setIdProcesVerbale(idProcesVerbale);
-        this.setIdDirecteur(idDirecteur);
-        this.setIdClient(idClient);
-        this.setDateRemise(dateRemise);
+        this.idProcesVerbale = idProcesVerbale;
+        this.idDirecteur = idDirecteur;
+        this.idClient=idClient;
+        this.dateRemise=dateRemise;
     }
 
     public int getIdProcesVerbale() {
@@ -121,5 +122,56 @@ public class ProcesVerbale implements IProcesVerbale {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static ArrayList<ProcesVerbale> getProcessVerbaleTable(){
+        ArrayList<ProcesVerbale> processVerbaleTable = new ArrayList<>();
+        int compteur = 1;
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        String sql = "select * from procesVerbale";
+        try{
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                processVerbaleTable.add(new ProcesVerbale(resultSet.getInt("IDPROCESVERBAL"),resultSet.getInt("IDDIRECTEUR"),resultSet.getInt("IDCLIENT"),resultSet.getDate("DATEREMISE")));
+                compteur++;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        System.out.println(processVerbaleTable.get(0).idProcesVerbale);
+        return processVerbaleTable ;
+
+    }
+
+    public static int getAll(){
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        String sql = "select * from procesVerbale";
+        String verification = "";
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            // System.out.print("le directeur selectionne est ");
+            while(resultSet.next()){
+                System.out.println(resultSet.getString("IDPROCESVERBAL"));
+                // System.out.println(resultSet.getString("NOMDIRECTEUR").getClass().getSimpleName());
+                verification = resultSet.getString("IDPROCESVERBAL");
+
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        if(verification.length()>0){
+            return Integer.parseInt(verification) ;
+
+        }else{
+            verification = "0";
+            return Integer.parseInt(verification) ;
+
+        }
     }
 }

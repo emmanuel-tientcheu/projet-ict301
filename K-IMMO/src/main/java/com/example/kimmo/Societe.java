@@ -2,6 +2,8 @@ package com.example.kimmo;
 
 //package config;
 import java.sql.*;
+import java.util.ArrayList;
+
 public class Societe implements  ISociete{
     private int idSociete;
     private String nomSociete;
@@ -92,6 +94,27 @@ public class Societe implements  ISociete{
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static ArrayList<Societe> getSocieteTable(){
+        ArrayList<Societe> societeTable = new ArrayList<>();
+        int compteur = 1;
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        String sql = "select * from socite";
+        try{
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                societeTable.add( new Societe(resultSet.getString("NOMSOCIETE"), resultSet.getInt("IDSOCIETE")));
+                compteur++;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        System.out.println(societeTable.get(0).nomSociete);
+        return societeTable ;
+
     }
 
 }

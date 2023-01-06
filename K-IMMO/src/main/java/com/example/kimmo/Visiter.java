@@ -6,15 +6,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Visiter  implements  IVisiter{
+    public int idVisiter;
     private int idAppartement;
     private int idClient;
     private Date dateVisite;
     private String remarques;
 
-    public Visiter(int idAppartement , int idClient , Date dateVisite , String remarques){
+    public Visiter(int idVisiter ,int idAppartement , int idClient , Date dateVisite , String remarques){
+        this.idVisiter = idVisiter;
         this.idAppartement = idAppartement;
         this.idClient = idClient;
         this.dateVisite = dateVisite;
@@ -51,6 +54,9 @@ public class Visiter  implements  IVisiter{
     public void setRemarques(String remarques) {
         this.remarques = remarques;
     }
+
+    public int getIdVisiter(){return idVisiter;}
+    public void setIdVisiter(int idVisiter){this.idVisiter = idVisiter;}
 
     @Override
     public Visiter createVisiter(Visiter visiter) {
@@ -121,5 +127,56 @@ public class Visiter  implements  IVisiter{
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static ArrayList<Visiter> getVisiterTable(){
+        ArrayList<Visiter> visiterTable = new ArrayList<>();
+        int compteur = 1;
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        String sql = "select * from visiter";
+        try{
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                visiterTable.add(new Visiter( resultSet.getInt("IDVISITER"),resultSet.getInt("IDAPPARTEMENT"), resultSet.getInt("IDCLIENT"),resultSet.getDate("DATEVISITE"), resultSet.getString("IDVISITER") ));
+                compteur++;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        System.out.println(visiterTable.get(0).remarques);
+        return visiterTable ;
+
+    }
+
+    public static int getAll(){
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        String sql = "select * from visiter";
+        String verification = "";
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            // System.out.print("le directeur selectionne est ");
+            while(resultSet.next()){
+                System.out.println(resultSet.getString("IDVISITER"));
+                // System.out.println(resultSet.getString("NOMDIRECTEUR").getClass().getSimpleName());
+                verification = resultSet.getString("IDVISITER");
+
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        if(verification.length()>0){
+            return Integer.parseInt(verification) ;
+
+        }else{
+            verification = "0";
+            return Integer.parseInt(verification) ;
+
+        }
     }
 }

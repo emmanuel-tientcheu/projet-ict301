@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class Immeuble implements IImmeuble{
     public int idImmeuble;
@@ -15,7 +16,7 @@ public class Immeuble implements IImmeuble{
 
     public  Immeuble(int idImmeuble ,int idSociete ,String adresse , String nomImmeuble){
         this.idImmeuble = idImmeuble;
-        this.setIdSociete(idSociete);
+        this.idSociete = idSociete;
         this.adresse = adresse;
         this.nomImmeuble = nomImmeuble;
     }
@@ -47,8 +48,8 @@ public class Immeuble implements IImmeuble{
     public Immeuble creteImmeuble(Immeuble immeuble) {
         MyJDBC connectNow = new MyJDBC();
         Connection connectDB = connectNow.getConnection();
-        String sql = "insert into immeuble (IDSOCIETE,ADRESSE,NOMIMMEUBLE)" +
-                "values('"+immeuble.getIdSociete()+"','"+immeuble.getAdresse()+"','"+immeuble.getNomImmeuble()+"')";
+        String sql = "insert into immeuble (IDIMMEUBLE,IDSOCIETE,ADRESSE,NOMIMMEUBLE)" +
+                "values('"+immeuble.getIdImmeuble()+"','"+immeuble.getIdSociete()+"','"+immeuble.getAdresse()+"','"+immeuble.getNomImmeuble()+"')";
         try {
             Statement statement = connectDB.createStatement();
             statement.executeUpdate(sql);
@@ -118,5 +119,56 @@ public class Immeuble implements IImmeuble{
 
     public void setIdSociete(int idSociete) {
         this.idSociete = idSociete;
+    }
+
+    public static ArrayList<Immeuble> getImmeubleTable(){
+        ArrayList<Immeuble> immeubleTable = new ArrayList<>();
+        int compteur = 1;
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        String sql = "select * from immeuble";
+        try{
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                immeubleTable.add(new Immeuble(resultSet.getInt("IDIMMEUBLE"), resultSet.getInt("IDSOCIETE"), resultSet.getString("ADRESSE"), resultSet.getString("NOMIMMEUBLE") ));
+                compteur++;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        System.out.println(immeubleTable.get(0).nomImmeuble);
+        return immeubleTable ;
+
+    }
+
+    public static int getAll(){
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        String sql = "select * from immeuble";
+        String verification = "";
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+         // System.out.print("le directeur selectionne est ");
+            while(resultSet.next()){
+                System.out.println(resultSet.getString("IDIMMEUBLE"));
+                // System.out.println(resultSet.getString("NOMDIRECTEUR").getClass().getSimpleName());
+                verification = resultSet.getString("IDIMMEUBLE");
+
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        if(verification.length()>0){
+            return Integer.parseInt(verification) ;
+
+        }else{
+            verification = "0";
+            return Integer.parseInt(verification) ;
+
+        }
     }
 }

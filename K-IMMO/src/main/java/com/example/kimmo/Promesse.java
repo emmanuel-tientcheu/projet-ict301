@@ -1,6 +1,7 @@
 package com.example.kimmo;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Promesse implements  IPromesse {
     private int idPromesse;
@@ -223,4 +224,27 @@ public class Promesse implements  IPromesse {
         Desistement desistement = new Desistement(id,promesse.getIdAppartement(),promesse.getIdClient(),numero,new Date(2023-01-03),cause,promesse.isSigner,promesse.getIdPromesse(),promesse.getIdDirecteur(),promesse.getIdAvocat());
         desistement.createDesistement(desistement);
     }
+
+    public static ArrayList<Promesse> getPromesseTable(){
+        ArrayList<Promesse> promesseTable = new ArrayList<>();
+        int compteur = 1;
+        MyJDBC connectNow = new MyJDBC();
+        Connection connectDB = connectNow.getConnection();
+        String sql = "select * from promesse";
+        try{
+            Statement statement = connectDB.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                promesseTable.add(new Promesse(resultSet.getInt("IDPROMESSE"), resultSet.getInt("IDAPPARTEMENT"), resultSet.getInt("IDCLIENT"), resultSet.getInt("IDAVOCAT"), resultSet.getInt("IDDIRECTEUR"), resultSet.getInt("STATUT"), resultSet.getInt("ISSIGNER"),resultSet.getDate("DATESIGNATURE"),resultSet.getFloat("PRIX_VENTE"),resultSet.getFloat("AVANCE") ));
+                compteur++;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        System.out.println(promesseTable.get(0).isSigner);
+        return promesseTable ;
+
+    }
+
+
 }
